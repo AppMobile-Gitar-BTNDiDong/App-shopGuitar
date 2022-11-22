@@ -1,6 +1,6 @@
 # App-shopGuitar
 
-### Server  ( [link](https://www.google.com/) )
+### Server  ( [link](https://json-server-guitar.herokuapp.com/) )
 
 ## Anh bài làm
 #####

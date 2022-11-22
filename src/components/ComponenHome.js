@@ -8,6 +8,7 @@ import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommun
 import styles from '../themes/styles';
 import color from '../themes/color';
 import data from '../database/data';
+import dataServer from '../database/dataServer';
 
 const ComponenHome = ({ navigation }) => {
 
@@ -17,7 +18,6 @@ const ComponenHome = ({ navigation }) => {
     //
     let { z_item, listItem } = data;
 
-
     let spConlai = () => {
         return Math.floor(Math.random() * (100 - 50)) + 50;
     };
@@ -25,6 +25,10 @@ const ComponenHome = ({ navigation }) => {
     //
     useEffect(() => {
         setDbGuitar(listItem)
+    // let listData = dataServer.findAll();
+    // console.log("🚀 ~ file: ComponenHome.js ~ line 21 ~ ComponenHome ~ listData", listData)
+
+
     }, [])
 
     //ham thay doi so pice
