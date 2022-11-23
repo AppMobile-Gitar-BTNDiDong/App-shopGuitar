@@ -33,3 +33,6 @@
 
 #### Screen 12: Profile
 <img src="./AnhMinhHoa/screen_12_Profile.png" alt="Không tồn tại !!!" width="300" />
+
+#### Screen 13: contact us
+<img src="./AnhMinhHoa/screen_13_ContactUs.png" alt="Không tồn tại !!!" width="300" />

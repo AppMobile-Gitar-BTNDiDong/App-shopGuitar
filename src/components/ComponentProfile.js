@@ -177,7 +177,9 @@ const ComponentProfile = ({ navigation }) => {
                     <View style={styleMenuBarStyle(2)}></View>
                     <IconFontAwesome name={styleMenuBarName === 2 ? 'heart' : 'heart-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    >
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}
+                    onPress={() => { navigation.navigate('ComponentContactUs') }}
+                >
                     <View style={styleMenuBarStyle(3)}></View>
                     <IconAntDesign name={styleMenuBarName === 3 ? 'downsquare' : 'down-square-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>

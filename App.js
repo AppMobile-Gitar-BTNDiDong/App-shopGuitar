@@ -13,6 +13,7 @@ import ComponentAddress from './src/components/ComponentAddress';
 import ComponentTBThanhCong from './src/components/ComponentTBThanhCong';
 import ComponentFavourite from './src/components/ComponentFavourite';
 import ComponentProfile from './src/components/ComponentProfile';
+import ComponentContactUs from './src/components/ComponentContactUs';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ export default function App() {
                 <Stack.Screen name="ComponentTBThanhCong" component={ComponentTBThanhCong} />
                 <Stack.Screen name="ComponentFavourite" component={ComponentFavourite} />
                 <Stack.Screen name="ComponentProfile" component={ComponentProfile} />
+                <Stack.Screen name="ComponentContactUs" component={ComponentContactUs} />
             </Stack.Navigator>
         </NavigationContainer>
     );
