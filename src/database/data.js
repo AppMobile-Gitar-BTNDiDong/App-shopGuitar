@@ -107,6 +107,29 @@ let listItem = [
         img: 'https://guitar.station.vn/wp-content/uploads/2020/05/dan-guitar-xanh-la-1-Copy-500x500.jpg',
     },
 ]
+///
+let listContactUs = [
+    {
+        id: 19504781,
+        name: 'Nguyễn việt Anh',
+        email: ''
+    },
+    {
+        id: 19507081,
+        name: 'Nguyễn dức Duy',
+        email: ''
+    },
+    {
+        id: 19508981,
+        name: 'Nguyễn văn Hoàng',
+        email: 'hoangkc35@gmail.com'
+    },
+    {
+        id: 19508951,
+        name: 'Nguyễn hữu Nghị',
+        email: ''
+    },
+]
 
 ///
 let rootUrl = 'https://json-server-guitar.herokuapp.com/listGuitar';
@@ -138,4 +161,5 @@ const findAll = async () => {
 export default {
     z_item: z_item,
     listItem,
+    listContactUs
 }

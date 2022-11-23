@@ -1,19 +1,53 @@
-import { View, Text, Button, StatusBar, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { View, Text, Button, StatusBar, TouchableOpacity, Image, FlatList } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
 import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconAntDesign from 'react-native-vector-icons/AntDesign'
 
 import styles from '../themes/styles';
 import color from '../themes/color';
+import data from '../database/data'
 
 const ComponentContactUs = ({ navigation }) => {
 
     //
-    let z_item ={
+    let z_item = {
         id: 19508981,
         name: 'Nguyễn văn Hoàng',
         email: 'hoangkc35@gmail.com'
+    }
+    let { listContactUs } = data
+
+    const [listUser, setListUser] = useState([])
+
+    // 
+    useEffect(() => {
+        setListUser(listContactUs);
+
+    }, [])
+
+
+    /**
+     *  render Item user
+     */
+    const renderItem = ({ item }) => {
+        return (
+            <View style={[, styles.row, {
+                alignItems: 'center',
+                marginVertical: 10,
+                paddingHorizontal: 10,
+                backgroundColor: '#fff',
+                borderRadius: 10,
+                paddingVertical: 10,
+            }]}  >
+                <Image style={[, { width: 100, height: 100, borderRadius: 10, }]} source={require('../images/img_scr13_avartar.png')} />
+                <View style={[styles.flex_1, { marginLeft: 10, height: 100, justifyContent: 'space-evenly', }]} >
+                    <Text  style={[  ,{fontWeight: 'bold'}]} >{item.id}</Text>
+                    <Text  style={[  ,{fontWeight: 'bold'}]} >{item.name}</Text>
+                    { item.email === "" ? "" :  <Text  style={[  ,{fontWeight: 'bold'}]} >{item.email}</Text>}
+                </View>
+            </View>
+        )
     }
 
     // menu bar
@@ -45,66 +79,27 @@ const ComponentContactUs = ({ navigation }) => {
             </View>
 
             {/*  */}
-            <View style={[styles.flex_1, {  margin: 20, }]}   >
-                <View style={[styles.flex_1, styles.row, {
-                    alignItems:'center',
+            <View style={[styles.flex_1, { margin: 20, }]}   >
+
+                {/* <View style={[styles.flex_1, styles.row, {
+                    alignItems: 'center',
                     marginVertical: 10,
                     paddingHorizontal: 10,
                     backgroundColor: '#fff',
                     borderRadius: 10,
                 }]}  >
                     <Image style={[, { width: 100, height: 100, borderRadius: 10, }]} source={require('../images/img_scr13_avartar.png')} />
-                    <View style={[styles.flex_1, {marginLeft: 10, height: 100, justifyContent: 'space-evenly',}]} >
+                    <View style={[styles.flex_1, { marginLeft: 10, height: 100, justifyContent: 'space-evenly', }]} >
                         <Text>{z_item.id}</Text>
                         <Text>{z_item.name}</Text>
                         <Text>{z_item.email}</Text>
                     </View>
-                </View>
-                {/*  */}
-                <View style={[styles.flex_1, styles.row, {
-                    alignItems:'center',
-                    marginVertical: 10,
-                    paddingHorizontal: 10,
-                    backgroundColor: '#fff',
-                    borderRadius: 10,
-                }]}  >
-                    <Image style={[, { width: 100, height: 100, borderRadius: 10, }]} source={require('../images/img_scr13_avartar.png')} />
-                    <View style={[styles.flex_1, {marginLeft: 10, height: 100, justifyContent: 'space-evenly',}]} >
-                        <Text>{z_item.id}</Text>
-                        <Text>{z_item.name}</Text>
-                        <Text>{z_item.email}</Text>
-                    </View>
-                </View>
-                {/*  */}
-                <View style={[styles.flex_1, styles.row, {
-                    alignItems:'center',
-                    marginVertical: 10,
-                    paddingHorizontal: 10,
-                    backgroundColor: '#fff',
-                    borderRadius: 10,
-                }]}  >
-                    <Image style={[, { width: 100, height: 100, borderRadius: 10, }]} source={require('../images/img_scr13_avartar.png')} />
-                    <View style={[styles.flex_1, {marginLeft: 10, height: 100, justifyContent: 'space-evenly',}]} >
-                        <Text>{z_item.id}</Text>
-                        <Text>{z_item.name}</Text>
-                        <Text>{z_item.email}</Text>
-                    </View>
-                </View>
-                {/*  */}
-                <View style={[styles.flex_1, styles.row, {
-                    alignItems:'center',
-                    marginVertical: 10,
-                    paddingHorizontal: 10,
-                    backgroundColor: '#fff',
-                    borderRadius: 10,
-                }]}  >
-                    <Image style={[, { width: 100, height: 100, borderRadius: 10, }]} source={require('../images/img_scr13_avartar.png')} />
-                    <View style={[styles.flex_1, {marginLeft: 10, height: 100, justifyContent: 'space-evenly',}]} >
-                        <Text>{z_item.id}</Text>
-                        <Text>{z_item.name}</Text>
-                        <Text>{z_item.email}</Text>
-                    </View>
-                </View>
+                </View> */}
+
+                <FlatList data={listUser}
+                    keyExtractor={item => item.id}
+                    renderItem={renderItem}
+                />
 
 
             </View>
@@ -143,11 +138,6 @@ const ComponentContactUs = ({ navigation }) => {
                     <IconFontAwesome name={styleMenuBarName === 4 ? 'user' : 'user-o'} size={26} color={'#eee'} />
                 </TouchableOpacity>
             </View>
-
-
-
-
-            {/* <Button title=' next ' onPress={() => navigation.navigate('ComponentAddress')} /> */}
 
         </View>
     )
