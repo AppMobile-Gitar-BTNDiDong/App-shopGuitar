@@ -149,7 +149,8 @@ const ComponentFavourite = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity 
                 style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    
-                onPress={() => {navigation.navigate('ComponentProfile')}}>
+                    onPress={() => {navigation.navigate('ComponentProfile')}}
+                >
                     <View style={styleMenuBarStyle(4)}></View>
                     <IconFontAwesome name={styleMenuBarName === 4 ? 'user' : 'user-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>

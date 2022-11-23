@@ -384,7 +384,9 @@ const ComponenHome = ({ navigation }) => {
                     <View style={styleMenuBarStyle(3)}></View>
                     <IconAntDesign name={styleMenuBarName === 3 ? 'downsquare' : 'down-square-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    >
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    
+                    onPress={() => {navigation.navigate('ComponentProfile')}}
+                >
                     <View style={styleMenuBarStyle(4)}></View>
                     <IconFontAwesome name={styleMenuBarName === 4 ? 'user' : 'user-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>

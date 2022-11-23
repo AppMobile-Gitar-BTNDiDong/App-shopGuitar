@@ -28,7 +28,8 @@
 #### Screen 10: Thông báo thành công 
 <img src="./AnhMinhHoa/screen_10_tbThanhCong.png" alt="Không tồn tại !!!" width="300" />
 
-#### Screen 11: Favourite
+#### Screen 11: Favourite screen_12_Profile.png
 <img src="./AnhMinhHoa/screen_11_Favourite.png" alt="Không tồn tại !!!" width="300" />
 
-
+#### Screen 12: Profile
+<img src="./AnhMinhHoa/screen_12_Profile.png" alt="Không tồn tại !!!" width="300" />
