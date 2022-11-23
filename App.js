@@ -11,6 +11,7 @@ import ComponentCart from './src/components/ComponentCart';
 import ComponentNhaGiaoHang from './src/components/ComponentNhaGiaoHang';
 import ComponentAddress from './src/components/ComponentAddress';
 import ComponentTBThanhCong from './src/components/ComponentTBThanhCong';
+import ComponentFavourite from './src/components/ComponentFavourite';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ export default function App() {
                 <Stack.Screen name="ComponentNhaGiaoHang" component={ComponentNhaGiaoHang} />
                 <Stack.Screen name="ComponentAddress" component={ComponentAddress} />
                 <Stack.Screen name="ComponentTBThanhCong" component={ComponentTBThanhCong} />
+                <Stack.Screen name="ComponentFavourite" component={ComponentFavourite} />
             </Stack.Navigator>
         </NavigationContainer>
     );

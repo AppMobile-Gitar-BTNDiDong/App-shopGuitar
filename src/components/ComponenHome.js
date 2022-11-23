@@ -374,7 +374,9 @@ const ComponenHome = ({ navigation }) => {
                     <View style={styleMenuBarStyle(1)}></View>
                     <IconMaterialCommunityIcons name={styleMenuBarName === 1 ? 'home' : 'home-outline'} size={25} color={'#eee'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    >
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    
+                    onPress={() => {navigation.navigate('ComponentFavourite')}}
+                >
                     <View style={styleMenuBarStyle(2)}></View>
                     <IconFontAwesome name={styleMenuBarName === 2 ? 'heart' : 'heart-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>
