@@ -8,9 +8,21 @@ import color from '../themes/color';
 import xuly from '../config/xuly';
 
 const ComponentDetail = ({ route, navigation }) => {
-    let { item } = route.params;
+    let { item, z_index } = route.params;
         
     let str_price = xuly.setPriceString(Math.floor(item.price - (item.price * item.sale) / 100));
+// {  }
+
+    //
+    const callGoBack = () => {
+        if (z_index === 1 ) {
+            navigation.navigate('ComponenHome')
+        }
+        else if (z_index === 2) {
+            navigation.navigate('ComponentFavourite')
+        }
+    }
+
 
     return (
         <View style={[styles.flex_1, {
@@ -23,7 +35,7 @@ const ComponentDetail = ({ route, navigation }) => {
                 alignItems: 'center',
                 marginTop: 5,
             }]} >
-                <TouchableOpacity onPress={() => { navigation.navigate('ComponenHome') }}>
+                <TouchableOpacity onPress={() => callGoBack()}>
                     <IconFontAwesome style={[, {
                         padding: 5,
                         backgroundColor: '#fff',

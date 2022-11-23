@@ -101,7 +101,7 @@ const ComponenHome = ({ navigation }) => {
 
         // call detail Item
         const getCallDetail = () => {
-            navigation.navigate('ComponentDetail', { item: item });
+            navigation.navigate('ComponentDetail', { item , z_index:1});
         }
 
         return (
@@ -152,7 +152,7 @@ const ComponenHome = ({ navigation }) => {
 
         // call detail Item
         const getCallDetail = () => {
-            navigation.navigate('ComponentDetail', { item: item });
+            navigation.navigate('ComponentDetail', { item: item, z_index:1 });
         }
         //
 

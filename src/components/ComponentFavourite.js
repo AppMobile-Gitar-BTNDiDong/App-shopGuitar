@@ -45,7 +45,7 @@ const ComponentFavourite = ({ navigation }) => {
 
         // call detail Item
         const getCallDetail = () => {
-            navigation.navigate('ComponentDetail', { item: item });
+            navigation.navigate('ComponentDetail', { item , z_index:2 });
         }
         //
 
