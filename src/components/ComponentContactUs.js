@@ -10,13 +10,13 @@ import data from '../database/data'
 
 const ComponentContactUs = ({ navigation }) => {
 
-    //
+    // data mau
     let z_item = {
         id: 19508981,
         name: 'Nguyễn văn Hoàng',
         email: 'hoangkc35@gmail.com'
     }
-    let { listContactUs } = data
+    let { listContactUs } = data;
 
     const [listUser, setListUser] = useState([])
 

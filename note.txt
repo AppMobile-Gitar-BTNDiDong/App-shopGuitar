@@ -7,3 +7,6 @@ Screen 7 (90%): su ly textInput
 Screen 8 (0%) : 
 Screen 9 (0%) : 
 Screen 10 (100%) : 
+Screen 11 (85%) : 
+Screen 12 (80%) : 
+Screen 13 (100%) : 
