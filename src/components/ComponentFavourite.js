@@ -8,6 +8,7 @@ import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommun
 import styles from '../themes/styles';
 import color from '../themes/color';
 import data from '../database/data';
+import xuly from '../config/xuly';
 import dataServer from '../database/dataServer';
 
 const ComponentFavourite = ({ navigation }) => {
@@ -16,18 +17,21 @@ const ComponentFavourite = ({ navigation }) => {
     const [dbGuitar, setDbGuitar] = useState([]);
 
     //
-    let { z_item, listItem } = data;
-
-    let spConlai = () => {
-        return Math.floor(Math.random() * (100 - 50)) + 50;
-    };
+    let { z_item, listItem } = data; // listData:  data ALL 
 
     //
     useEffect(() => {
-        setDbGuitar(listItem)
+        let db = []; // data Favourite
+
+        listItem.forEach(item  => {
+            if (item.favourite == true) {
+                db.push(item)
+            }
+        })
+
+        setDbGuitar(db)
     // let listData = dataServer.findAll();
     // console.log("🚀 ~ file: ComponenHome.js ~ line 21 ~ ComponenHome ~ listData", listData)
-
 
     }, [])
 
@@ -37,7 +41,7 @@ const ComponentFavourite = ({ navigation }) => {
     const renderItemFavourite = ({ item }) => {
 
         // let str_priceSale = setPriceString(Math.floor(item.price - (item.price * item.sale) / 100));
-        // let str_price = setPriceString(Math.floor(item.price));
+        let str_price = xuly.setPriceString(Math.floor(item.price));
 
         // call detail Item
         const getCallDetail = () => {
@@ -45,45 +49,48 @@ const ComponentFavourite = ({ navigation }) => {
         }
         //
 
-        if (item.favourite == false) {
-            return (
-                <View></View>
-            )
-        }
-
         return (
-            <View style={[styles.row, {
+            <View style={[, {
+                width: 150,
+                minHeight: 200,
                 backgroundColor: '#fff',
-                padding: 5,
                 borderRadius: 10,
+                paddingTop: 20,
                 alignItems: 'center',
+                marginRight: 15,
                 marginBottom: 15,
             }]} >
-                <View style={{flexDirection: 'column'}}>
-                    <Image style={[, { width: 110, height: 110 }]} source={{ uri: item.img }} />
-                    <View style={{marginVertical: 5, flexDirection:'column' }} >
-                        <TouchableOpacity onPress={() => getCallDetail()}>
-                            <Text style={[, { fontWeight: 'bold', fontSize: 13 }]}  >{item.name}</Text>
-                        </TouchableOpacity>
-                        <View style={{flexDirection: 'row'}}>
-                            <Text style={[, { opacity: 0.5, marginTop: 5, color: 'brown' }]} >$ {item.price}</Text>
-                            <TouchableOpacity style={[, {
-                            position: 'absolute',
-                            top: 10,
-                            right: 10,
-                        }]}>
+                <Image style={[, { width: 150, height: 150, }]} source={{ uri: item.img }} />
+                <View style={[, { padding: 10, }]}  >
+                    <TouchableOpacity onPress={() => getCallDetail()}>
+                        <Text style={[, {
+                            fontSize: 12,
+                            fontWeight: 'bold',
+                        }]} >{item.name}</Text>
+                    </TouchableOpacity>
+                    <Text style={[, {
+                        fontSize: 13,
+                        color: color.color_main,
+                        marginTop: 10,
+                    }]} >$ {str_price}</Text>
+                </View>
+
+                <TouchableOpacity style={[, {
+                    position: 'absolute',
+                    top: 10,
+                    right: 10,
+                }]}
+
+                >
                     <IconMaterialCommunityIcons name={item.favourite ? 'heart' : 'heart-outline'} size={25} color={item.favourite ? '#f00' : '#000'} />
                 </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
             </View>
            
         )
     }
 
     // menu bar
-    let styleMenuBarName = 1;
+    let styleMenuBarName = 2;
     // let styleMenuBarStyle = styles.menuClick;
     let styleMenuBarStyle = (val) => {
         if (val === styleMenuBarName) {
@@ -107,21 +114,15 @@ const ComponentFavourite = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
             <View style={[styles.flex_1, {
-                marginTop: 20,
-                width: 150,
+                marginTop: 15,
+                marginLeft: 5,
             }]} >
 
                 <FlatList
-                    // columnWrapperStyle={{justifyContent: 'space-between'}}
-                    showsVerticalScrollIndicator={false}
-                    // contentContainerStyle={{
-                    //   marginTop: 10,
-                    //   paddingBottom: 50,
-                    // }}
-                    // numColumns={2}
                     data={dbGuitar}
                     keyExtractor={item => item.id}
                     renderItem={renderItemFavourite}
+                    numColumns={2}
                 />
 
             </View>
