@@ -14,6 +14,7 @@ const ComponenHome = ({ navigation }) => {
 
     //
     const [dbGuitar, setDbGuitar] = useState([]);
+    const [txtSearch, setTxtSearch] = useState('');
 
     //
     let { z_item, listItem } = data;
@@ -25,8 +26,8 @@ const ComponenHome = ({ navigation }) => {
     //
     useEffect(() => {
         setDbGuitar(listItem)
-    // let listData = dataServer.findAll();
-    // console.log("🚀 ~ file: ComponenHome.js ~ line 21 ~ ComponenHome ~ listData", listData)
+        // let listData = dataServer.findAll();
+        // console.log("🚀 ~ file: ComponenHome.js ~ line 21 ~ ComponenHome ~ listData", listData)
 
 
     }, [])
@@ -101,7 +102,7 @@ const ComponenHome = ({ navigation }) => {
 
         // call detail Item
         const getCallDetail = () => {
-            navigation.navigate('ComponentDetail', { item , z_index:1});
+            navigation.navigate('ComponentDetail', { item, z_index: 1 });
         }
 
         return (
@@ -152,7 +153,7 @@ const ComponenHome = ({ navigation }) => {
 
         // call detail Item
         const getCallDetail = () => {
-            navigation.navigate('ComponentDetail', { item: item, z_index:1 });
+            navigation.navigate('ComponentDetail', { item: item, z_index: 1 });
         }
         //
 
@@ -202,6 +203,19 @@ const ComponenHome = ({ navigation }) => {
         return null;
     };
 
+    /// search 
+    const callSearch = () => {
+        let list = [];
+        listItem.forEach((item) => {
+            if (item.name.search(txtSearch) != -1) {
+                list.push(item)
+            }
+
+        })
+        setDbGuitar(list)
+
+    }
+
     return (
         <View style={[styles.flex_1, {
             backgroundColor: color.color_bg,
@@ -218,10 +232,13 @@ const ComponenHome = ({ navigation }) => {
                     backgroundColor: '#f9f9f9',
                     borderRadius: 12,
                 }]}  >
-                    <IconFontAwesome style={[, { padding: 8, paddingHorizontal: 10, margin: 5, backgroundColor: '#fff', borderRadius: 20 }]} name='search' size={20} color='#000' />
-                    <TextInput style={[styles.flex_1, { padding: 10, fontSize: 15, }]} placeholder='Search your guitar' />
+                    <TouchableOpacity onPress={() => callSearch()} >
+                        <IconFontAwesome style={[, { padding: 8, paddingHorizontal: 10, margin: 5, backgroundColor: '#fff', borderRadius: 20 }]} name='search' size={20} color='#000'
+                        />
+                    </TouchableOpacity>
+                    <TextInput style={[styles.flex_1, { padding: 10, fontSize: 15, }]} onChangeText={txt => setTxtSearch(txt)} value={txtSearch} placeholder='Search your guitar' />
                 </View>
-                <TouchableOpacity onPress={() => {navigation.navigate('ComponentCart')}}>
+                <TouchableOpacity onPress={() => { navigation.navigate('ComponentCart') }}>
                     <IconMaterialCommunityIcons style={[, {
                         marginLeft: 18,
                         padding: 8, backgroundColor: '#fff',
@@ -252,7 +269,12 @@ const ComponenHome = ({ navigation }) => {
                     marginVertical: 5
                 }]} >
                     <Text style={[, { fontSize: 16, fontWeight: 'bold', }]} >Out Product</Text>
-                    <Text style={[, { fontSize: 12, color: color.color_main, }]} >See All</Text>
+                    <TouchableOpacity onPress={() => {
+                        setTxtSearch("");
+                        setDbGuitar(listItem);
+                    }}>
+                        <Text style={[, { fontSize: 12, color: color.color_main, }]} >See All</Text>
+                    </TouchableOpacity>
                 </View>
 
                 {/* Chưa xong - them flatList */}
@@ -374,20 +396,20 @@ const ComponenHome = ({ navigation }) => {
                     <View style={styleMenuBarStyle(1)}></View>
                     <IconMaterialCommunityIcons name={styleMenuBarName === 1 ? 'home' : 'home-outline'} size={25} color={'#eee'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    
-                    onPress={() => {navigation.navigate('ComponentFavourite')}}
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}
+                    onPress={() => { navigation.navigate('ComponentFavourite') }}
                 >
                     <View style={styleMenuBarStyle(2)}></View>
                     <IconFontAwesome name={styleMenuBarName === 2 ? 'heart' : 'heart-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    
-                    onPress={() => {navigation.navigate('ComponentContactUs')}}
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}
+                    onPress={() => { navigation.navigate('ComponentContactUs') }}
                 >
                     <View style={styleMenuBarStyle(3)}></View>
                     <IconAntDesign name={styleMenuBarName === 3 ? 'downsquare' : 'down-square-o'} size={25} color={'#eee'} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}    
-                    onPress={() => {navigation.navigate('ComponentProfile')}}
+                <TouchableOpacity style={[, { padding: 8, paddingHorizontal: 10, alignItems: 'center' }]}
+                    onPress={() => { navigation.navigate('ComponentProfile') }}
                 >
                     <View style={styleMenuBarStyle(4)}></View>
                     <IconFontAwesome name={styleMenuBarName === 4 ? 'user' : 'user-o'} size={25} color={'#eee'} />
