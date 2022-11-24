@@ -1,6 +1,7 @@
 # App-shopGuitar
 
 ### Server  ( [link](https://json-server-guitar.herokuapp.com/) )
+### tài liệu ( [ link tài liệu ](https://github.com/AppMobile-Gitar-BTNDiDong/TaiLieuMonDiDong))
 
 ## Anh bài làm
 #####
